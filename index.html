@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sito in manutenzione</title>
+  <style>
+    :root {
+      /* Sostituisci l'URL con la tua immagine */
+      --bg-url: url('https://images.unsplash.com/photo-1522199710521-72d69614c702?q=80&w=1920&auto=format&fit=crop');
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: #e8f0ff;
+      background: #0b1120; /* fallback */
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      isolation: isolate; /* keep blur behind content */
+    }
+
+    /* Background image + blur */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-url);
+      background-size: cover;
+      background-position: center;
+      filter: blur(12px) saturate(1.1);
+      transform: scale(1.08); /* avoids edge blur crop */
+      z-index: -2;
+    }
+
+    /* Subtle dark overlay to improve contrast */
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(1200px 800px at 50% 40%, rgba(7, 17, 34, 0.15), rgba(7, 17, 34, 0.65)),
+                  linear-gradient(180deg, rgba(7, 17, 34, 0.35), rgba(7, 17, 34, 0.85));
+      z-index: -1;
+    }
+
+    .card {
+      max-width: 720px;
+      width: min(92vw, 720px);
+      text-align: center;
+      padding: 2.25rem 2rem;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    h1 {
+      margin: 0 0 .5rem;
+      font-size: clamp(1.8rem, 3.8vw, 3rem);
+      letter-spacing: .4px;
+    }
+
+    p {
+      margin: 0;
+      opacity: .9;
+      line-height: 1.6;
+      font-size: clamp(1rem, 1.6vw, 1.125rem);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: .85rem;
+      padding: .35rem .7rem;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c8d6ff;
+      background: rgba(99, 102, 241, 0.18);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 999px;
+    }
+
+    .foot {
+      margin-top: 1.25rem;
+      font-size: .95rem;
+      opacity: .85;
+    }
+  </style>
+</head>
+<body>
+  <main class="page" role="main" aria-label="Pagina di manutenzione">
+    <section class="card" aria-live="polite">
+      <span class="tag">Aggiornamento in corso</span>
+      <h1>Stiamo ristrutturando il sito</h1>
+      <p>
+        Stiamo lavorando a una nuova esperienza. Torna a trovarci a breve!
+      </p>
+    </section>
+  </main>
+</body>
+</html>
